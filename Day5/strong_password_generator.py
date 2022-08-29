@@ -28,4 +28,4 @@ random.shuffle(password_list)
 password = ""
 for i in password_list:
     password = password + i
-
+print(f"Your password is: {password} Keep it Safe")
