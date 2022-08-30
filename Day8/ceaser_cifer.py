@@ -40,7 +40,19 @@ def decrypt(message, shift):
 if encode_or_decode == "encode":
     enc = encrypt(message= message, shift=shift)
     enc_message = ''.join(enc)
-    print(enc_message)
+    print(f" Here is Your encoded result: {enc_message}")
+    command = input("Type 'Yes' if you want to continue and 'No' if you want to quite: ").lower()
+
+    if command == 'yes':
+        encode_or_decode = input("Type 'encode' to encrypt or 'decode' to decrypt: \n")
+        message = input("Type Your Message: \n").lower()
+
+        shift = input("Type shift Number: \n")
+
+    else:
+        exit()
+
+
 if encode_or_decode == "decode":
     dec = decrypt(message=message, shift=int(shift))
     dec_message = ''.join(dec)
