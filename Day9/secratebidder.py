@@ -1,35 +1,43 @@
 import os
-name = input("what is Your name?\n").lower()
-bidd = input("what is Your bidd? ")
-
-bidder_history = {}
-bidder_history[name] = bidd
 
 
-command = input("Are ther any Other bidders? Type 'yes' or 'no'").lower()
-run = 1
-while run == 1:
-        
+
+
+
+is_finished = False
+
+while not is_finished:
+    bids = {}
+
+    name = input("what is Your name?\n").lower()
+    bidd = int(input("what is Your bidd? $"))
+    
+    bids[name] = bidd
+
+    command = input("Are ther any Other bidders? Type 'yes' or 'no'").lower()
+
     if command == 'yes':
         os.system('clear')
-        name = input("what is Your name?\n").lower()
-        bidd = input("what is Your bidd? ")
-        bidder_history[name] = bidd
-        command = input("Are ther any Other bidders? Type 'yes' or 'no'").lower()
-    else:
-        run = 0
+
+    elif command == 'no':
         larger = 0
-        for bider in bidder_history:
-            if int(bider[name]) > larger:
-                larger = int(bider[name])
+        winner = ""
+        for bid in bids:
+            print(bid)
+            bid_amount = bids[bid]
+            if bid_amount > larger:
+                larger = bid_amount
+                winner = bid
+        is_finished = True
+        print(f"Winner is {winner} with ${larger}")
+
+
 
 
     
 
 
 
-
-
-print(bidder_history)  
+ 
 
 
