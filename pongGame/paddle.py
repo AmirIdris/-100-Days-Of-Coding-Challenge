@@ -2,26 +2,24 @@ from turtle import Turtle
 
 
 class Paddle(Turtle):
-    def __init__(self):
+    def __init__(self, position):
         super().__init__()
         self.shape("square")
         self.color("white")
         self.penup()
+        self.goto(position[0], position[1])
+        self.stretch()
 
     def stretch(self):
         self.shapesize(stretch_wid=5, stretch_len=1)
 
-    def give_position(self, prop):
-        if prop == "first":
-            self.stretch()
-            self.goto(-320, 0)
+    def move_the_paddle_up(self):
+        y_cord = self.ycor() + 50
+        self.goto(self.xcor(), y_cord)
 
-        if prop == "second":
-            self.stretch()
-            self.goto(320, 0)
-
-        if prop == "center":
-            self.shapesize(stretch_wid=0.5, stretch_len=0.5)
+    def move_the_paddle_down(self):
+        y_cord = self.ycor() - 50
+        self.goto(self.xcor(), y_cord)
 
 
 
