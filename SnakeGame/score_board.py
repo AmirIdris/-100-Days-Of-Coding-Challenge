@@ -24,7 +24,7 @@ class ScoreBoard(Turtle):
         if self.score > self.high_score:
             self.high_score = self.score
             with open("data.txt", mode="w") as f:
-                f.write(str(self.high_score))
+                f.write(str(self.high_scoreGI))
         self.score = 0
         self.update_score()
 
