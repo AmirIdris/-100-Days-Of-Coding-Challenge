@@ -1,16 +1,29 @@
-# This is a sample Python script.
-
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# requesting an api using python request modules
+import requests
+from tkinter import *
+# data = requests.get("https://api.kanye.rest").json()
+# print(data["quote"])
 
 
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
+def get_quote():
+    quote = requests.get("https://api.kanye.rest").json()
+    canvas.itemconfig(quote_label, text=quote["quote"])
 
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+
+# ----------------------------------------------UI DESIGN -------------------------------------------------
+window = Tk()
+window.title("Kanye Once Says")
+window.config(padx=25, pady=25)
+
+canvas = Canvas(width=300, height=414)
+background_image = PhotoImage(file="Data/img.png")
+canvas.create_image(150, 270, image=background_image)
+quote_label = canvas.create_text(150, 270, text="Kanye quote goes hear", font=("Arial", 8, "italic"))
+canvas.grid(row=0, column=0)
+kanye_image = PhotoImage(file="Data/img_1.png")
+kanye_button = Button(image=kanye_image, highlightthickness=0, command=get_quote)
+kanye_button.grid(row=1, column=0)
+get_quote()
+window.mainloop()
+
+
